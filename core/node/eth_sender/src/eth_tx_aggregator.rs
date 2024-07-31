@@ -1,3 +1,8 @@
+use std::{env, io::Cursor};
+
+use reqwest::Client;
+use s3::{creds::Credentials, region::Region, Bucket};
+use serde_json::{json, Value};
 use tokio::sync::watch;
 use zksync_config::configs::eth_sender::SenderConfig;
 use zksync_contracts::BaseSystemContractsHashes;
@@ -31,15 +36,6 @@ use crate::{
     zksync_functions::ZkSyncFunctions,
     Aggregator, EthSenderError,
 };
-
-use std::{env, io::Cursor};
-
-use reqwest::Client;
-use serde_json::{json, Value};
-
-use s3::creds::Credentials;
-use s3::region::Region;
-use s3::Bucket;
 
 /// Data queried from L1 using multicall contract.
 #[derive(Debug)]

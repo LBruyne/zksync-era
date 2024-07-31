@@ -1,4 +1,4 @@
-use std::sync::Arc;
+use std::{fs::File, io::Write, sync::Arc};
 
 use assert_matches::assert_matches;
 use once_cell::sync::Lazy;
@@ -30,13 +30,9 @@ use zksync_types::{
 use crate::{
     abstract_l1_interface::{L1BlockNumbers, OperatorType},
     aggregated_operations::AggregatedOperation,
+    ipfs_api::{IpfsApi, IpfsClient},
     Aggregator, EthSenderError, EthTxAggregator, EthTxManager,
 };
-
-use std::fs::File;
-use std::io::Write;
-
-use crate::ipfs_api::{IpfsApi, IpfsClient};
 
 // Alias to conveniently call static methods of `ETHSender`.
 type MockEthTxManager = EthTxManager;
