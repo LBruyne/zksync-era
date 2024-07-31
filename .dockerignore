@@ -10,6 +10,7 @@
 !etc/env/configs
 !etc/tokens
 !etc/ERC20
+!etc/utils
 !artifacts
 !keys
 keys/setup

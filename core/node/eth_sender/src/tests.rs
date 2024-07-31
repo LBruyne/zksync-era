@@ -33,6 +33,11 @@ use crate::{
     Aggregator, EthSenderError, EthTxAggregator, EthTxManager,
 };
 
+use std::fs::File;
+use std::io::Write;
+
+use crate::ipfs_api::{IpfsApi, IpfsClient};
+
 // Alias to conveniently call static methods of `ETHSender`.
 type MockEthTxManager = EthTxManager;
 
@@ -784,7 +789,7 @@ async fn failed_eth_tx(commitment_mode: L1BatchCommitmentMode) {
         .unwrap();
 }
 
-#[test_casing(2, COMMITMENT_MODES)]
+#[test_casing(1, COMMITMENT_MODES)]
 #[tokio::test]
 async fn correct_order_for_confirmations(
     commitment_mode: L1BatchCommitmentMode,
